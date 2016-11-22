@@ -1,0 +1,16 @@
+scripts:
+  up:
+    - touch foobar.txt
+  down:
+    - echo "DELETE ALL THIIIINGS"
+hooks:
+  - branch: master
+    deploy_on_push: true
+    deploy_only_in_pr: false
+    environments:
+      SYMFONY_ENV: prod
+  - branch: feature/\s*
+    deploy_on_push: true
+    deploy_only_in_pr: true
+    environments:
+      SYMFONY_ENV: dev
